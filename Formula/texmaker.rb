@@ -10,8 +10,9 @@ class Texmaker < Formula
 
   on_linux do
     depends_on "gcc"
-    fails_with gcc: "5"
   end
+
+  fails_with gcc: "5"
 
   patch :p0, :DATA
 
