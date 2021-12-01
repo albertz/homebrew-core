@@ -5,14 +5,13 @@ class Texmaker < Formula
   sha256 "526896f2c1ae561130eec7aae815b9dcda9e8eeb772b6541d0dc94ce91a71044"
   license "GPL-2.0-only"
 
+  depends_on xcode: :build
   depends_on "qt"
 
-  depends_on xcode: :build
   on_linux do
     depends_on "gcc"
+    fails_with gcc: "5"
   end
-
-  fails_with gcc: "5"
 
   patch :p0, :DATA
 
