@@ -3,7 +3,7 @@ class Texmaker < Formula
   homepage "https://www.xm1math.net/texmaker/"
   url "https://www.xm1math.net/texmaker/texmaker-5.1.2.tar.bz2"
   sha256 "526896f2c1ae561130eec7aae815b9dcda9e8eeb772b6541d0dc94ce91a71044"
-  license "GPL-2.0"
+  license "GPL-2.0-only"
 
   depends_on "qt"
 
@@ -18,11 +18,13 @@ class Texmaker < Formula
   def install
     args = [
       "PREFIX=#{prefix}",
-      "DESKTOPDIR=#{prefix}/share/applications",
-      "ICONDIR=#{prefix}/share/pixmaps",
-      "METAINFODIR=#{prefix}/share/metainfo",
+      "DESKTOPDIR=#{share}/applications",
+      "ICONDIR=#{share}/pixmaps",
+      "METAINFODIR=#{share}/metainfo",
       "QMAKE_CXXFLAGS=#{ENV.cxxflags}",
-      "-config", "release", "-spec"]
+      "-config", "release",
+      "-spec"
+    ]
     os = OS.mac? ? "macx" : OS.kernel_name.downcase
     compiler = ENV.compiler.to_s.start_with?("gcc") ? "g++" : ENV.compiler
     arch = Hardware::CPU.intel? ? "" : "-#{Hardware::CPU.arch}"
@@ -31,6 +33,11 @@ class Texmaker < Formula
     system Formula["qt"].opt_bin/"qmake", *args
     system "make"
     system "make", "install"
+  end
+
+  test do
+    assert_predicate bin/"texmaker", :exist?, "texmaker must exist"
+    assert_predicate bin/"texmaker", :executable?, "texmaker must be executable"
   end
 end
 
