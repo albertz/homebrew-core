@@ -10,6 +10,9 @@ class Texmaker < Formula
   on_linux do
     depends_on "gcc"
   end
+  on_macos do
+    depends_on xcode: :build
+  end
 
   fails_with gcc: "5"
 
