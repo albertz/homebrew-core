@@ -28,8 +28,7 @@ class Texmaker < Formula
     ]
     os = OS.mac? ? "macx" : OS.kernel_name.downcase
     compiler = ENV.compiler.to_s.start_with?("gcc") ? "g++" : ENV.compiler
-    arch = Hardware::CPU.intel? ? "" : "-#{Hardware::CPU.arch}"
-    args << "#{os}-#{compiler}#{arch}"
+    args << "#{os}-#{compiler}"
 
     system Formula["qt"].opt_bin/"qmake", *args
     system "make"
