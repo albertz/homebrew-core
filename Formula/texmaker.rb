@@ -58,4 +58,4 @@ __END__
 +    pm = NULL;
      if (!pm) {
          QImage img = pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
- 
+
