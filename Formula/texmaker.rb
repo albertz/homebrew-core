@@ -38,8 +38,12 @@ class Texmaker < Formula
   end
 
   test do
-    assert_predicate bin/"texmaker", :exist?, "texmaker must exist"
-    assert_predicate bin/"texmaker", :executable?, "texmaker must be executable"
+    if OS.mac?
+      assert_predicate "Texmaker.app", :exist?, "Texmaker.app must exist"
+    else
+      assert_predicate bin/"texmaker", :exist?, "texmaker must exist"
+      assert_predicate bin/"texmaker", :executable?, "texmaker must be executable"
+    end
   end
 end
 
