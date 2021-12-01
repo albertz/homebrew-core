@@ -34,7 +34,10 @@ class Texmaker < Formula
     system "make"
     system "make", "install"
 
-    prefix.install "Texmaker.app" if OS.mac?
+    if OS.mac?
+      prefix.install "Texmaker.app"
+      bin.write_exec_script "#{prefix}/Texmaker.app/Contents/MacOS/texmaker"
+    end
   end
 
   test do
