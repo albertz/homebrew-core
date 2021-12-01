@@ -7,11 +7,9 @@ class Texmaker < Formula
 
   depends_on "qt"
 
+  depends_on xcode: :build
   on_linux do
     depends_on "gcc"
-  end
-  on_macos do
-    depends_on xcode: :build
   end
 
   fails_with gcc: "5"
