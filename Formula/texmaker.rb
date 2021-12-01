@@ -33,6 +33,8 @@ class Texmaker < Formula
     system Formula["qt"].opt_bin/"qmake", *args
     system "make"
     system "make", "install"
+
+    prefix.install "Texmaker.app" if OS.mac?
   end
 
   test do
