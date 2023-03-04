@@ -22,6 +22,7 @@ class Glib < Formula
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
   depends_on "pcre2"
+  depends_on "dbus"
 
   uses_from_macos "libffi", since: :catalina
   uses_from_macos "python", since: :catalina
